@@ -71,3 +71,47 @@ bash runscript.sh
 
 With elevated (sudo) privileges.
 
+
+# 🧠 Quick Notes: Shell Scripting Essentials
+
+## 1. `cd /q2 || exit 1`
+
+✅ **Purpose**:  
+Ensure the script only continues **if the directory change is successful**.
+
+📌 **Breakdown**:
+- `cd /q2`: Try to go to the `/q2` directory.
+- `||`: OR operator — only runs the next command **if the previous one fails**.
+- `exit 1`: Stop the script with an error code.
+
+🔐 **Why?**  
+Prevents running commands in the **wrong location** if `/q2` doesn’t exist.
+
+---
+
+## 2. `find . -type f -exec chmod 0664 {} \;`
+
+✅ **Purpose**:  
+**Find all files** in the current directory and change their permissions.
+
+📌 **Breakdown**:
+- `find .`: Start searching from the current directory.
+- `-type f`: Match **files only**.
+- `-exec chmod 0664 {} \;`: For each file found, run `chmod 0664`.
+
+🔑 **Symbols**:
+- `{}` → placeholder for each matched file.
+- `\;` → ends the `-exec` command (must be escaped).
+
+---
+
+## 📝 TL;DR Summary
+
+| Snippet | Purpose |
+|--------|---------|
+| `cd DIR || exit 1` | Fail fast if directory doesn't exist |
+| `find . -type f -exec chmod ...` | Change permissions for all files recursively |
+
+---
+
+
